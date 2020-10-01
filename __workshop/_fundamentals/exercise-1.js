@@ -6,8 +6,9 @@
 //
 
 const convertToString = (arr) => {
-  // Insert missing solution please
-};
+  return arr.toString()
+}; 
+console.log(convertToString([1, 2, 3, 4, 5]))
 
 // Part 2 - Test
 // --------------
