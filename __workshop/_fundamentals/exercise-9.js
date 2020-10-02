@@ -9,7 +9,16 @@
 // - To represent a newline character, you can use "\n".
 
 const wrapAfter40Chars = (paragraph) => {
-  // Your code here
+    let words = paragraph.split("");
+    let count = 0; 
+    let output = []; 
+
+    words.forEach( function (numb) { 
+      if (count 40 % === 0 && count > 0) { 
+        output.push("/n")
+      }
+      else
+    })
 };
 
 // Part 2 - Test

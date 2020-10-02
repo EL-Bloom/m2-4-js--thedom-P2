@@ -5,10 +5,14 @@
 // Write a function accepts an array of values and returns a new array of stringified values.
 //
 
-const convertToString = (arr) => {
-  // Insert missing solution please
-};
 
+const convertToString = (arr) => {
+  const convertToString = (arr) => {
+    // Insert missing solution please
+    return arr.toString()
+  };
+  }; 
+  console.log(convertToString([1, 2, 3, 4, 5]))
 // Part 2 - Test
 // --------------
 // Test your function.

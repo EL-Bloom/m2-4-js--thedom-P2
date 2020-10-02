@@ -12,8 +12,12 @@
 
 const count = (arr, key) => {
   // Insert missing solution please
+  let sum = 0;
+  arr.forEach((obj) => {
+    sum += obj[key] && typeof obj[key] === "number" ? obj[key] : 0;
+  });
+  return sum;
 };
-
 // Part 2 - Test
 // --------------
 // Test your function.

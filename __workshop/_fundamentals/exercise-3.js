@@ -12,11 +12,27 @@
 //   { name: "Josie", isAvailable: false },
 // ];
 //
-// - If the second parameter is not an object, return the original array element
+// - If the second parameter is not an object, return the original array element 
+
+//1. break out everything into an array 
+//2.if obj is not an object, just return arr alone 
+//3.combine everything within an array
 
 const insert = (arr, obj) => {
-  // Insert missing solution please
-};
+   
+  return arr.map(function (item) { 
+    if(typeof obj === "object") { 
+      return {...item, ...obj};
+    } 
+    else { 
+      return item;
+    }
+  });
+}
+ 
+
+
+console.log(insert([{ name: "Bob" }, { name: "Josie" }], {"isAvailable": false}));
 
 // Part 2 - Test
 // --------------

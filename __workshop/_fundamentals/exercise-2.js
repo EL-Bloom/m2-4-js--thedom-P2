@@ -8,9 +8,27 @@
 // e.g. redacted(["bacon", false, 42]) returns [ 'redacted', false, 42 ]
 //
 
+//1. return a new array 
+//2. find strings within the array 
+//3. replace those strings with the word "redacted" 
+//4. if   NOT a string, leave as is
+
+
+
 const redacted = (arr) => {
-  // Insert missing solution please
-};
+ 
+  return arr.map(function (val) {
+    if (typeof val === "string") {
+      return "redacted";
+    } else {
+      return val;
+    }
+  });
+}
+
+
+
+console.log(redacted(["bacon", false, 42]));
 
 // Part 2 - Test
 // --------------

@@ -7,10 +7,23 @@
 // - If any element is not a number, skip it.
 // - If no arguments are passed, return `undefined`
 
-const addNumbers = (...nums) => {
-  // Insert missing solution please
-};
-
+const addNumbers = (...nums) => { 
+  nums.forEach ((count) => {
+  if (typeOf nums === "number") {  
+    let sum = mathSum((math.square(...nums))); 
+    return sum;
+  }  
+  else if (typeOf nums !== "number") { 
+    return nums;
+  }
+  else () { 
+    return undefined;
+  }
+}};
+test("Exercise 5", () => {
+  expect(addNumbers(1, 2, 3, 4, 5)).toBe(55);
+  // add more tests here...
+});
 // Part 2 - Test
 // --------------
 // Test your function.

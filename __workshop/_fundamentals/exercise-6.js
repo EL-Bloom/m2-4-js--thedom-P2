@@ -11,10 +11,19 @@
 // RADAR -> Yes
 // JAVASCRIPT -> No
 
-function isPalindrome(theString) {
-  // Your code here
+function isPalindrome(theString) {  
+  let words = [];
+ words = theString.match(/\S+/g);
+ let result= "";
+ for (let i = 0; i < words.length; i++) {
+  return result += words[i].split('').reverse().join('');
+} 
+if ( result === theString) { 
+  return "true";
 }
 
+}
+console.log(isPalindrome("radar"));
 // Part 2 - Test
 // --------------
 // Test your function.
