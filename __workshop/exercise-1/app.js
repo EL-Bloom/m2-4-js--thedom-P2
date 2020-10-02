@@ -1,60 +1,62 @@
 // Preset values
-const FROGS = 3; 
-let track = document.getElementById("track");
-  
-//create rows
-for (let count = 1; count <= FROGS; count++) { 
-    let li = document.createElement('li'); 
-    li.id = `Lane- ${count+1}`; 
-    let span = document.createElement('span'); 
-    span.textContent = `Lane- ${count+1}`; 
-    li.appendChild(span) 
-    track.appendChild(li);
-} 
-let racers = [];
-for (let i = 0; i < FROGS; i++) {
-  racers.push(frogstable[i]);
-  frogstable[i].progress = 0;
-  frogstable[i].lane = `lane-${i + 1}`;
+const FROGS = 3;
+ 
+
+
+for (let count = 1; count <= FROGS; count++) {  
+    const lane = document.createElement("li"); 
+    lane.id = `lane-${count}`;  
+
+  const num = document.createElement("span");  
+  num.innerText = count; 
+
+    lane.appendChild(num); 
+    track.appendChild(lane);
+}    
+ 
+// 1.2 - Call the Frogs
+const racers = [];  
+for (let i = 0; i < FROGS; i++) { 
+    racers.push(frogstable[i]); 
+}  
+// 1.3 - Line up the frogs  
+racers.forEach(function (racer, id) {   
+    const newFrog= document.createElement("span"); 
+    newFrog.style.background = racer.color;
+    newFrog.innerText = `${racer.number}`; 
+    document.getElementById(`lane-${id + 1}`).appendChild(newFrog); 
+
+     // 1.4 Add styling to frogs  
+  newFrog.classList.add("frog"); 
+  const frogName = document.createElement("span");   
+  frogName.classList.add("frog-name"); 
+  frogName.innerText = racer.name; 
+  document.getElementById(`lane-${id + 1}`).appendChild(frogName);  
+
+ //1.5 Track Progress 
+  racers[id].progress = 0;
+  racers[id].lane = `lane-${id + 1}`;
+}); 
+ 
+//1.6 Make frogs hop   
+
+function racingFrog(racer) {  
+  const trackWidth = track.offsetWidth;
+ 
+  const hop = setInterval(function () {
+    const hopLength = Math.floor(((Math.random() * 100) / trackWidth) * 100); 
+   racer.progress += hopLength; 
+
+    console.log(racer.name," is at " + racer.progress); 
+
+    if (racer.progress >= 100) {   
+      racer.progress = 100; 
+      console.log(racer.name," has finished the race!");
+      clearInterval(hop);
+    } 
+
+    document.querySelector(`#${racer.lane} .frog`).style.left = `${racer.progress}%`;
+  }, Math.random() * 1000); 
 }
-console.log(racers);
 
-//Assign each line to a racers
-
-racers.forEach(function (frog, number) {
-  let frogSpan = document.createElement("span");
-  let frogName = document.createElement("span");
-  frogSpan.style.backgroundColor = frog.color;
-  frogSpan.innerText = frog.number;
-  frogName.innerText = frog.name;
-  frogName.className = "frog-name";
-  frogSpan.className = "frog";
-  frogSpan.id = `frog-${frog.name}`;
-
-  document.getElementById(`Lane-${number + 1}`).appendChild(frogSpan);
-  document.getElementById(`Lane-${number + 1}`).appendChild(frogName);
-});
-
-//Create hop/ movement
-
-function racingFrog(racer) {
-  let racerName = document.getElementById(`frog-${racer.name}`);
-  let hop = setInterval(function () {
-    if (racer.progress < 100) {
-      const trackWidth = track.offsetWidth;
-      hopLength = Math.floor(Math.random() * 100) / (trackWidth / 100);
-      // console.log(trackWidth);
-      racer.progress += hopLength;
-      racerName.style.left = `${racer.progress}%`;
-    } else {
-      racerName.style.left = "100%";
-    }
-  }, Math.floor(Math.random() * 2000));
-  console.log(racerName);
-
-  console.log("racingFrog()", racer);
-}
-
-racers.forEach(function (frog) {
-  racingFrog(frog);
-});
+racers.forEach((racer) => racingFrog(racer));
